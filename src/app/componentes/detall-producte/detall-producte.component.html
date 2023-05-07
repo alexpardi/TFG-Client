@@ -1,0 +1,38 @@
+
+<div class="container" *ngFor= "let producte of Producto">
+  <div class="row">
+    <div class="col">
+      <img src="assets/productos_image/{{ producte.ProdImatge }}" width="350" height="350">
+    </div>
+    <div class="col">
+      <h1>{{ producte.ProdNom }}</h1>
+      <p>{{ producte.ProdDescripcio }}</p>
+      <h5>Preu: {{ producte.ProdPreu }} €</h5>
+      <div class="row" style="width: 300px">
+        <div class="col">
+          <button>S</button>
+        </div>
+        <div class="col">
+          <button>M</button>
+        </div>
+        <div class="col">
+          <button>L</button>
+        </div>
+        <div class="col">
+          <button>XL</button>
+        </div>
+      </div>
+      <br>
+      <div class="row" style="width: 300px" >
+        <button>Afegir al cistell</button>
+      </div>
+      <br>
+      <div class="row" style="width: 300px">
+        <button onClick="afegirFavorits();">Favorits</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

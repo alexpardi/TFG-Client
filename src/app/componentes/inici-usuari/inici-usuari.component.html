@@ -1,0 +1,145 @@
+<div class="container mt-5" *ngIf="isLogged() == true">
+  <div class="col-lg-6 offset-lg-3">
+    <div class="card">
+      <div class="card-body text-center border-4">
+        <span class="titulo">MODIFICAR USUARI</span>
+        <form class="mt-4" name="ProdForm" [formGroup]="modiUserForm" (ngSubmit)="modificarUser()">
+          <div class="mb-3">
+            <span class="float-start" style="font-size: 20px">Nom d'usuari:</span>
+            <input type="text" formControlName="ModUsuari" class="form-control form-control-lg" readonly>
+          </div>
+
+          <div class="mb-3">
+            <span *ngIf="modiUserForm.get('ModEmail')?.value" class="float-start" style="font-size: 20px">Modifica correu electrònic:</span>
+            <input type="text" ngModel email class="form-control form-control-lg" placeholder="Modifica correu electrònic" formControlName="ModEmail">
+            <div class="text-danger" *ngIf="modiUserForm.get('ModEmail')?.hasError('required') && modiUserForm.get('ModEmail')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <span *ngIf="modiUserForm.get('ModNom')?.value" class="float-start" style="font-size: 20px">Modifica el teu Nom:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Modifica el teu Nom" formControlName="ModNom">
+            <div class="text-danger" *ngIf="modiUserForm.get('ModNom')?.hasError('required') && modiUserForm.get('ModNom')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <span *ngIf="modiUserForm.get('ModContrasenya')?.value" class="float-start" style="font-size: 20px">Modifica la contrasenya:</span>
+            <input type="password" class="form-control form-control-lg" placeholder="Modifica la contrasenya" formControlName="ModContrasenya">
+            <div class="text-danger" *ngIf="modiUserForm.get('ModContrasenya')?.hasError('required') && modiUserForm.get('ModContrasenya')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row mb-3">
+            <div class="col">
+              <button type="submit" [disabled]="modiUserForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
+            </div>
+            <div class="col">
+              <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
+            </div>
+          </div>
+
+          <br>
+
+          <a routerLink="/login" ><button class="btn btn-danger" (click)="_Service.logOut()">TANCAR SESSIÓ</button> </a>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--Revisar el isLogged, no funciona correctamente-->
+
+<div class="container" style="width: 140%;" *ngIf="isLogged() == false">
+  <div class="row" style="border-color: gray">
+    <div class="col">
+      <h4 class="titulo">REGISTRAR-SE</h4>
+      <form class="mt-4" [formGroup]="regUsersForm" (ngSubmit)="AddUsuari()" >
+        <div class="mb-3">
+          <span *ngIf="regUsersForm.get('CreaUsuari')?.value" class="float-start" style="font-size: 20px">Nom d'usuari:</span>
+          <input type="text" class="form-control form-control-lg" placeholder="Nom d'usuari" formControlName="CreaUsuari">
+          <div class="text-danger" *ngIf="regUsersForm.get('CreaUsuari')?.hasError('required') && regUsersForm.get('CreaUsuari')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <span *ngIf="regUsersForm.get('CreaEmail')?.value" class="float-start" style="font-size: 20px">Correu electrònic:</span>
+          <input type="email" ngModel email class="form-control form-control-lg" placeholder="Correu electrònic" formControlName="CreaEmail" >
+          <div class="text-danger" *ngIf="regUsersForm.get('CreaEmail')?.hasError('required') && regUsersForm.get('CreaEmail')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <span *ngIf="regUsersForm.get('CreaNom')?.value" class="float-start" style="font-size: 20px">Nom:</span>
+          <input type="text" class="form-control form-control-lg" placeholder="Nom" formControlName="CreaNom">
+          <div class="text-danger" *ngIf="regUsersForm.get('CreaNom')?.hasError('required') && regUsersForm.get('CreaNom')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <span *ngIf="regUsersForm.get('CreaContrasenya')?.value" class="float-start" style="font-size: 20px">Contrasenya:</span>
+          <input type="password" class="form-control form-control-lg" placeholder="Contrasenya" formControlName="CreaContrasenya">
+          <div class="text-danger" *ngIf="regUsersForm.get('CreaContrasenya')?.hasError('CreaContrasenya') && regUsersForm.get('CreaContrasenya')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <button type="submit" [disabled]="regUsersForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
+          </div>
+          <div class="col">
+            <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col">
+      <h4 class="titulo">INICIAR SESSIÓ</h4>
+      <form class="mt-4" [formGroup]="iniUsersForm" (ngSubmit)="IniciaSessio()" >
+        <div class="mb-3">
+          <span *ngIf="iniUsersForm.get('IniciUsuari')?.value" class="float-start" style="font-size: 20px">Nom d'usuari:</span>
+          <input type="text" class="form-control form-control-lg" placeholder="Nom d'usuari" formControlName="IniciUsuari">
+          <div class="text-danger" *ngIf="iniUsersForm.get('IniciUsuari')?.hasError('required') && iniUsersForm.get('IniciUsuari')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <span *ngIf="iniUsersForm.get('IniciContrasenya')?.value" class="float-start" style="font-size: 20px">Contrasenya:</span>
+          <input type="password" class="form-control form-control-lg" placeholder="Contrasenya" formControlName="IniciContrasenya">
+          <div class="text-danger" *ngIf="iniUsersForm.get('IniciContrasenya')?.hasError('required') && iniUsersForm.get('IniciContrasenya')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <button type="submit" [disabled]="iniUsersForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
+          </div>
+          <div class="col">
+            <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+
+
