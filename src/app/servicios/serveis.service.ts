@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Productos } from "../modelos/productos"
 import { Users } from "../modelos/users";
@@ -19,7 +19,12 @@ export class ServeisService {
   urlUI = 'http://localhost:4000/api/client/iniciaSessio';
   urlMU = 'http://localhost:4000/api/client/modificaUsuari';
   urlEU = 'http://localhost:4000/api/client/getUsuari';
-  urlF = 'http://localhost:4000/api/favorits';
+  urlF = 'http://localhost:4000/api/client/favorits';
+  urlEF = 'http://localhost:4000/api/client/eliminafavorits';
+  urlC = 'http://localhost:4000/api/client/cistell';
+  urlEC = 'http://localhost:4000/api/client/eliminacistell';
+  urlDG = 'http://localhost:4000/api/desplegable/';
+  urlDP = 'http://localhost:4000/api/desplegable/petit/';
   constructor(private  http: HttpClient) { }
 
   getProductes(): Observable<any>{
@@ -66,5 +71,29 @@ export class ServeisService {
 
   getFavorits(id: string): Observable<any>{
     return this.http.get(this.urlF + id);
+  }
+
+  eliminarFavorits(prod: Favorits): Observable<any>{
+    return this.http.put(this.urlEF, prod);
+  }
+
+  afegirCistell(prod: Favorits): Observable<any>{
+    return this.http.put(this.urlC, prod)
+  }
+
+  getCistell(id: string): Observable<any>{
+    return this.http.get(this.urlC + id);
+  }
+
+  eliminarCistell(prod: Favorits): Observable<any>{
+    return this.http.put(this.urlEC, prod);
+  }
+
+  desplegableG(esport: string): Observable<any>{
+    return this.http.get(this.urlDG + esport);
+  }
+
+  desplegableP(tipus: string, esport: string): Observable<any>{
+    return this.http.get(this.urlDP + esport + "/" +tipus);
   }
 }

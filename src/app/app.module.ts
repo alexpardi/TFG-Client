@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IniciUsuariComponent } from './componentes/inici-usuari/inici-usuari.component';
 import { CistellComponent } from './componentes/cistell/cistell.component';
 import { DetallProducteComponent } from './componentes/detall-producte/detall-producte.component';
+import { FavoritsComponent } from './componentes/favorits/favorits.component';
+import { DesplegablesComponent } from './componentes/desplegables/desplegables.component';
 
 /*import {AuthGuard} from "./auth.guard";
 import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
@@ -21,14 +23,16 @@ import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
     PaginaPrincipalComponent,
     IniciUsuariComponent,
     CistellComponent,
-    DetallProducteComponent
+    DetallProducteComponent,
+    FavoritsComponent,
+    DesplegablesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [/*AuthGuard,
     {

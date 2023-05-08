@@ -17,7 +17,7 @@ export class IniciUsuariComponent {
   regUsersForm: FormGroup;
   modiUserForm: FormGroup;
   iniUsersForm: FormGroup;
-
+  Users: Users;
   id: string | null;
 
   constructor(private fb: FormBuilder, private router: Router, public _Service: ServeisService, private aRouter: ActivatedRoute) {
@@ -39,6 +39,13 @@ export class IniciUsuariComponent {
       ModContrasenya: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
+    this.Users ={
+      UserName: "",
+      UserMail: "",
+      UserNameReal: "",
+      UserContrasenya: "",
+      LlistaProductes:[],
+    };
   }
 
   ngOnInit(): void{
@@ -51,6 +58,7 @@ export class IniciUsuariComponent {
       UserMail: this.regUsersForm.get('CreaEmail')?.value,
       UserNameReal: this.regUsersForm.get('CreaNom')?.value,
       UserContrasenya: this.regUsersForm.get('CreaContrasenya')?.value,
+      LlistaProductes: [],
     }
 
     console.log(USUARI);
@@ -136,15 +144,21 @@ export class IniciUsuariComponent {
     }
   }
 
-  getFavortis(){
-    if(this.id !== null){
+  getFavorits(){
+    var jwt = localStorage.getItem('token');
+    if(jwt){
+      const tokenInfo = jwt_decode(jwt);
 
-      this._Service.editarUsuari(this.id).subscribe(data=> {
-        data.
-
+      let part = Object(tokenInfo)._id;
+      this._Service.getFavorits(part).subscribe(data=> {
         console.log(data);
+        this.Users = data;
+      }, error => {
+        console.log(error);
       })
     }
+
   }
+
 
 }

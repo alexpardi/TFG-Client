@@ -1,0 +1,15 @@
+<h1 class="text-center">{{esport}}</h1>
+
+<div class="container" >
+  <div class="row">
+    <div class="col" *ngFor= "let productes of listProductos">
+      <button class="btn list-unstyled border-0" [routerLink]="['/detall-producte', productes._id]">
+        <img src="assets/productos_image/{{ productes.ProdImatge }}" width="250" height="250">
+        <h5>{{ productes.ProdNom }}</h5>
+        <a>{{ productes.ProdPreu }} €</a>
+      </button>
+    </div>
+  </div>
+</div>
+<h4 class="text-center" *ngIf="listProductos.length == 0">Encara no hi ha productes a {{esport}}</h4>
+

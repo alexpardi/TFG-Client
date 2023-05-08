@@ -1,5 +1,5 @@
 
-<h1 class="text-center">Cistell</h1>
+<h1 class="text-center">Favorits</h1>
 
 <div class="container">
   <div class="row">
@@ -8,11 +8,11 @@
         <img src="assets/productos_image/{{ productes.ProdImatge }}" width="250" height="250">
         <h5>{{ productes.ProdNom }}</h5>
         <a>{{ productes.ProdPreu }} €</a><br>
-        <button (click)="eliminarCistell(productes._id)">Eliminar del cistell</button>
+        <button (click)="eliminarFavorits(productes._id)">Eliminar de favorits</button>
       </button>
 
     </div>
   </div>
 </div>
-<h4 class="text-center" *ngIf="listFavorits.length == 0">Encara no hi ha productes al cistell.</h4>
+<h4 class="text-center" *ngIf="listFavorits.length == 0">Encara no hi ha productes a favorits</h4>
 

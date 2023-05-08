@@ -1,18 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import jwt_decode from "jwt-decode";
-import {FormBuilder} from "@angular/forms";
+import { Component, OnInit} from '@angular/core';
+import {Productos} from "../../modelos/productos";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ServeisService} from "../../servicios/serveis.service";
-import { Users } from "../../modelos/users"
-import { Favorits } from "../../modelos/favorits";
-import {Productos} from "../../modelos/productos";
+import jwt_decode from "jwt-decode";
+import {Favorits} from "../../modelos/favorits";
+
 
 @Component({
-  selector: 'app-cistell',
-  templateUrl: './cistell.component.html',
-  styleUrls: ['./cistell.component.css']
+  selector: 'app-favorits',
+  templateUrl: './favorits.component.html',
+  styleUrls: ['./favorits.component.css']
 })
-export class CistellComponent implements OnInit{
+export class FavoritsComponent implements OnInit{
   listFavorits: Productos[];
   id: string | null;
   constructor(private router: Router, private _Service: ServeisService, private aRouter: ActivatedRoute) {
@@ -21,17 +20,17 @@ export class CistellComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.getCistell();
+    this.getFavorits();
   }
 
-  getCistell() {
+  getFavorits() {
     var jwt = localStorage.getItem('token');
     if (jwt) {
       const tokenInfo = jwt_decode(jwt);
 
       let part = Object(tokenInfo).id;
       if (part != null) {
-        this._Service.getCistell(part).subscribe(data => {
+        this._Service.getFavorits(part).subscribe(data => {
           console.log(data);
           this.listFavorits = data;
         }, error => {
@@ -41,17 +40,17 @@ export class CistellComponent implements OnInit{
     }
   }
 
-  eliminarCistell(id: any){
+  eliminarFavorits(id: any){
     const Favorit: Favorits = {
       UserName: this.getToken(),
       LlistaProductes: id,
     }
 
     if(confirm('Estas segur que vols eliminar aquest producte de favorits?')){
-      this._Service.eliminarCistell(Favorit).subscribe(data => {
+      this._Service.eliminarFavorits(Favorit).subscribe(data => {
         console.log(data)
-        this.getCistell();
-        this.router.navigate(['/cistell']);
+        this.getFavorits();
+        this.router.navigate(['/favorits']);
       }, error => {
         console.log(error);
       })
@@ -67,4 +66,5 @@ export class CistellComponent implements OnInit{
       return part
     }
   }
+
 }
