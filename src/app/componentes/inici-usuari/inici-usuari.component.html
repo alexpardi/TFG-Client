@@ -31,6 +31,8 @@
             <div class="text-danger" *ngIf="modiUserForm.get('ModContrasenya')?.hasError('required') && modiUserForm.get('ModContrasenya')?.touched">
               <span>Camp obligatori</span>
             </div>
+            <a *ngIf="isVisibleMU" style="text-align: center">Dades incorrectes. Torna a intenar.</a>
+
           </div>
 
           <br>
@@ -104,6 +106,7 @@
           </div>
         </div>
       </form>
+      <a *ngIf="isVisibleCU" style="text-align: center">Dades incorrectes. Torna a intenar.</a>
     </div>
 
 
@@ -135,6 +138,7 @@
           </div>
         </div>
       </form>
+      <a *ngIf="isVisibleIS" style="text-align: center">Usuari o contrasenya incorrectes. Torna a intenar.</a>
     </div>
   </div>
 

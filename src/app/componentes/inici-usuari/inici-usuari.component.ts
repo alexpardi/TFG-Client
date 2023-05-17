@@ -19,7 +19,9 @@ export class IniciUsuariComponent {
   iniUsersForm: FormGroup;
   Users: Users;
   id: string | null;
-
+  isVisibleMU: boolean;
+  isVisibleIS: boolean;
+  isVisibleCU: boolean;
   constructor(private fb: FormBuilder, private router: Router, public _Service: ServeisService, private aRouter: ActivatedRoute) {
     this.regUsersForm = this.fb.group({
       CreaUsuari: ['', Validators.required],
@@ -46,6 +48,10 @@ export class IniciUsuariComponent {
       UserContrasenya: "",
       LlistaProductes:[],
     };
+
+    this.isVisibleMU=false;
+    this.isVisibleIS=false;
+    this.isVisibleCU=false;
   }
 
   ngOnInit(): void{
@@ -69,7 +75,11 @@ export class IniciUsuariComponent {
     }, error => {
       console.log(error);
       //this.AddUserForm.reset();
-      alert("Datos incorrectos");
+      //alert("Datos incorrectos");
+      this.isVisibleCU = true;
+      setTimeout(() => {
+        this.isVisibleCU = false;
+      }, 5000);
     })
 
   }
@@ -88,7 +98,11 @@ export class IniciUsuariComponent {
     }, error => {
       console.log(error);
       //this.InitSesionForm.reset();
-      alert("L'usuari o la contrasenya son incorrectes");
+      //alert("L'usuari o la contrasenya son incorrectes");
+      this.isVisibleIS = true;
+      setTimeout(() => {
+        this.isVisibleIS = false;
+      }, 5000);
     })
   }
 
@@ -113,7 +127,11 @@ export class IniciUsuariComponent {
     }, error => {
       console.log(error);
       //this.AddProductForm.reset();
-      alert("No s'ha pogut modificar l'usuari.");
+      //alert("No s'ha pogut modificar l'usuari.");
+      this.isVisibleMU = true;
+      setTimeout(() => {
+        this.isVisibleMU = false;
+      }, 5000);
     })
 
   }
@@ -142,22 +160,6 @@ export class IniciUsuariComponent {
       let part = Object(tokenInfo).UserName;
       return part
     }
-  }
-
-  getFavorits(){
-    var jwt = localStorage.getItem('token');
-    if(jwt){
-      const tokenInfo = jwt_decode(jwt);
-
-      let part = Object(tokenInfo)._id;
-      this._Service.getFavorits(part).subscribe(data=> {
-        console.log(data);
-        this.Users = data;
-      }, error => {
-        console.log(error);
-      })
-    }
-
   }
 
 

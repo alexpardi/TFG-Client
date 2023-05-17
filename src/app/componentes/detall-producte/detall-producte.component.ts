@@ -17,7 +17,10 @@ export class DetallProducteComponent implements OnInit{
   id: string | null;
   user: string | null
   Users: Users;
-
+  isVisibleF: boolean;
+  isVisibleC: boolean;
+  isVisibleFS: boolean;
+  isVisibleCS: boolean;
   constructor( private router: Router, private _Service: ServeisService, private aRouter: ActivatedRoute) {
     this.id = this.aRouter.snapshot.paramMap.get('id');
     this.Producto = [];
@@ -29,6 +32,10 @@ export class DetallProducteComponent implements OnInit{
       UserContrasenya: "",
       LlistaProductes:[],
     };
+    this.isVisibleF=false;
+    this.isVisibleC=false;
+    this.isVisibleFS=false;
+    this.isVisibleCS=false;
   }
 
   ngOnInit(): void{
@@ -56,14 +63,21 @@ export class DetallProducteComponent implements OnInit{
         }
         this._Service.afegirFavorit(Favorit).subscribe(data => {
           console.log(data);
-          alert("Producte afegit correctament");
+          //alert("Producte afegit correctament");
+          this.isVisibleF = true;
+          setTimeout(() => {
+            this.isVisibleF = false;
+          }, 5000);
         }, error => {
           console.log(error);
 
         })
       }
     }else{
-      alert("Has d'iniciar sessió per poder utilitzar aquesta funcionalitat.");
+      this.isVisibleFS = true;
+      setTimeout(() => {
+        this.isVisibleFS = false;
+      }, 5000);
     }
   }
 
@@ -77,14 +91,22 @@ export class DetallProducteComponent implements OnInit{
         }
         this._Service.afegirCistell(Favorit).subscribe(data => {
           console.log(data);
-          alert("Producte afegit correctament");
+          //alert("Producte afegit correctament");
+          this.isVisibleC = true;
+          setTimeout(() => {
+            this.isVisibleC = false;
+          }, 5000);
         }, error => {
           console.log(error);
 
         })
       }
     }else{
-      alert("Has d'iniciar sessió per poder utilitzar aquesta funcionalitat.");
+      //alert("Has d'iniciar sessió per poder utilitzar aquesta funcionalitat.");
+      this.isVisibleCS = true;
+      setTimeout(() => {
+        this.isVisibleCS = false;
+      }, 5000);
     }
   }
 

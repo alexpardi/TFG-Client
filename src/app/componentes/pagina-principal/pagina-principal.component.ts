@@ -11,11 +11,15 @@ export class PaginaPrincipalComponent {
 
   listProductes: Productos[] = [];
 
+  vista: boolean;
+  searchText: any;
   constructor(private _Service: ServeisService) {
+    this.vista=false;
   }
 
   ngOnInit(): void{
     this.obtenirProductes();
+
   }
 
   obtenirProductes(){
@@ -25,6 +29,14 @@ export class PaginaPrincipalComponent {
     }, error => {
       console.log(error);
     })
+  }
+
+  setVista(){
+    if(this.vista == false){
+      this.vista=true;
+    }else{
+      this.vista=false;
+    }
   }
 
 

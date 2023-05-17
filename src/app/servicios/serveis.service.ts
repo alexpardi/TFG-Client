@@ -25,6 +25,9 @@ export class ServeisService {
   urlEC = 'http://localhost:4000/api/client/eliminacistell';
   urlDG = 'http://localhost:4000/api/desplegable/';
   urlDP = 'http://localhost:4000/api/desplegable/petit/';
+  urlRC = 'http://localhost:4000/api/client/comprar';
+  urlCA = 'http://localhost:4000/api/client/compresanteriors';
+
   constructor(private  http: HttpClient) { }
 
   getProductes(): Observable<any>{
@@ -95,5 +98,13 @@ export class ServeisService {
 
   desplegableP(tipus: string, esport: string): Observable<any>{
     return this.http.get(this.urlDP + esport + "/" +tipus);
+  }
+
+  realitzaCompra(prod: Favorits): Observable<any>{
+    return this.http.put(this.urlRC, prod);
+  }
+
+  getCompresAnteriors(id: string): Observable<any>{
+    return this.http.get(this.urlCA + id);
   }
 }

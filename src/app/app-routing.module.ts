@@ -6,6 +6,7 @@ import {CistellComponent} from "./componentes/cistell/cistell.component";
 import {DetallProducteComponent} from "./componentes/detall-producte/detall-producte.component";
 import {FavoritsComponent} from "./componentes/favorits/favorits.component";
 import {DesplegablesComponent} from "./componentes/desplegables/desplegables.component";
+import {CompresAnteriorsComponent} from "./componentes/compres-anteriors/compres-anteriors.component";
 
 const routes: Routes = [
   {path: '', component: PaginaPrincipalComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'favorits', component: FavoritsComponent},
   {path: 'desplegable/:esport', component: DesplegablesComponent},
   {path: 'desplegableP/:esport/:tipus', component: DesplegablesComponent},
+  {path: 'compres-anteriors', component: CompresAnteriorsComponent},
 ];
 
 @NgModule({

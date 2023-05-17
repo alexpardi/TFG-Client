@@ -1,5 +1,5 @@
 
-<h1 class="text-center">Cistell</h1>
+<h1 class="text-center">Compres realitzades anteriorment</h1>
 
 <div class="container">
   <div class="row">
@@ -23,17 +23,14 @@
           <h5>{{ productes.ProdNom }}</h5>
           <a>{{ productes.ProdPreu }} €</a><br>
         </button>
-        <button class="btn btn-outline-danger" style="width: auto; margin: auto" (click)="eliminarCistell(productes._id)" >Eliminar del cistell</button>
       </div>
     </div>
   </div>
 
   <br>
-  <button class="btn btn-dark" (click)="realitzaCompra()" *ngIf="listCistell.length != 0" [routerLink]="['/']">Realitzar compra</button>
-  <button class="btn btn-dark" [routerLink]="['/compres-anteriors']">Compres anteriors</button>
 
 </div>
-<h4 class="text-center" *ngIf="listCistell.length == 0">Encara no hi ha productes al cistell.</h4>
+<h4 class="text-center" *ngIf="listCistell.length == 0">Encara no has realitzat cap compra.</h4>
 
 
 

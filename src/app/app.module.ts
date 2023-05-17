@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{ HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,8 @@ import { DetallProducteComponent } from './componentes/detall-producte/detall-pr
 import { FavoritsComponent } from './componentes/favorits/favorits.component';
 import { DesplegablesComponent } from './componentes/desplegables/desplegables.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CompresAnteriorsComponent } from './componentes/compres-anteriors/compres-anteriors.component';
 /*import {AuthGuard} from "./auth.guard";
 import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
 
@@ -25,14 +27,17 @@ import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
     CistellComponent,
     DetallProducteComponent,
     FavoritsComponent,
-    DesplegablesComponent
+    DesplegablesComponent,
+    CompresAnteriorsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
   ],
   providers: [/*AuthGuard,
     {

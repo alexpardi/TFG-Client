@@ -25,14 +25,17 @@
       <br>
       <div class="row" style="width: 300px" >
         <button (click)="afegirCistell()">Afegir al cistell</button>
+        <a *ngIf="isVisibleC" style="text-align: center">Producte afegit al cistell.</a>
+        <a *ngIf="isVisibleCS" style="text-align: center">Cal iniciar sessió previament.</a>
       </div>
       <br>
       <div class="row" style="width: 300px">
-        <button (click)="afegirFavorits()">Favorits</button>
+        <button (click)="afegirFavorits()" >Afegir a favorits</button>
+        <a *ngIf="isVisibleF" style="text-align: center">Producte afegit a favorits.</a>
+        <a *ngIf="isVisibleFS" style="text-align: center">Cal iniciar sessió previament.</a>
       </div>
+
     </div>
-
-
-
   </div>
 </div>
+

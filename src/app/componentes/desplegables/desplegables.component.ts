@@ -14,10 +14,13 @@ export class DesplegablesComponent implements OnInit{
   listProductos: Productos[];
   tipus: string | null;
   esport: string | null;
+  vista: boolean;
+  searchText: any;
   constructor(private router: Router, private _Service: ServeisService, private aRouter: ActivatedRoute) {
     this.listProductos = [];
     this.tipus = this.aRouter.snapshot.paramMap.get('tipus');
     this.esport = this.aRouter.snapshot.paramMap.get('esport');
+    this.vista=false;
   }
 
   ngOnInit(): void {
@@ -49,4 +52,11 @@ export class DesplegablesComponent implements OnInit{
     }
   }
 
+  setVista(){
+    if(this.vista == false){
+      this.vista=true;
+    }else{
+      this.vista=false;
+    }
+  }
 }
