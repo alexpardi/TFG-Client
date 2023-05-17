@@ -9,24 +9,80 @@
       <p>{{ producte.ProdDescripcio }}</p>
       <h5>Preu: {{ producte.ProdPreu }} €</h5>
       <div class="row" style="width: 300px">
-        <div class="col">
-          <button>S</button>
+        <div class="col" *ngIf="producte.ProdAfegitsS">
+          <button (click)="setTalla('S')" *ngIf="TS" class="btn btn-primary">S</button>
+          <button (click)="setTalla('S')" *ngIf="!TS" class="btn btn-secondary">S</button>
         </div>
-        <div class="col">
-          <button>M</button>
+        <div class="col" *ngIf="producte.ProdAfegitsM">
+          <button (click)="setTalla('M')" *ngIf="TM" class="btn btn-primary">M</button>
+          <button (click)="setTalla('M')" *ngIf="!TM" class="btn btn-secondary">M</button>
         </div>
-        <div class="col">
-          <button>L</button>
+        <div class="col" *ngIf="producte.ProdAfegitsL">
+          <button (click)="setTalla('L')" *ngIf="TL" class="btn btn-primary">L</button>
+          <button (click)="setTalla('L')" *ngIf="!TL" class="btn btn-secondary">L</button>
         </div>
-        <div class="col">
-          <button>XL</button>
+        <div class="col" *ngIf="producte.ProdAfegitsXL">
+          <button (click)="setTalla('XL')" *ngIf="TXL" class="btn btn-primary">XL</button>
+          <button (click)="setTalla('XL')" *ngIf="!TXL" class="btn btn-secondary">XL</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits">
+          <button (click)="setTalla('U')" *ngIf="TU" class="btn btn-primary">Talla única</button>
+          <button (click)="setTalla('U')" *ngIf="!TU" class="btn btn-secondary">Talla única</button>
+        </div>
+
+
+      </div>
+      <div class="row" style="width: 700px">
+        <div class="col" *ngIf="producte.ProdAfegits37">
+          <button (click)="setTalla('37')" *ngIf="T37" class="btn btn-primary">37</button>
+          <button (click)="setTalla('37')" *ngIf="!T37" class="btn btn-secondary">37</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits38">
+          <button (click)="setTalla('38')" *ngIf="T38" class="btn btn-primary">38</button>
+          <button (click)="setTalla('38')" *ngIf="!T38" class="btn btn-secondary">38</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits39">
+          <button (click)="setTalla('39')" *ngIf="T39" class="btn btn-primary">39</button>
+          <button (click)="setTalla('39')" *ngIf="!T39" class="btn btn-secondary">39</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits40">
+          <button (click)="setTalla('40')" *ngIf="T40" class="btn btn-primary">40</button>
+          <button (click)="setTalla('40')" *ngIf="!T40" class="btn btn-secondary">40</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits41">
+          <button (click)="setTalla('41')" *ngIf="T41" class="btn btn-primary">41</button>
+          <button (click)="setTalla('41')" *ngIf="!T41" class="btn btn-secondary">41</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits42">
+          <button (click)="setTalla('42')" *ngIf="T42" class="btn btn-primary">42</button>
+          <button (click)="setTalla('42')" *ngIf="!T42" class="btn btn-secondary">42</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits43">
+          <button (click)="setTalla('43')" *ngIf="T43" class="btn btn-primary">43</button>
+          <button (click)="setTalla('43')" *ngIf="!T43" class="btn btn-secondary">43</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits44">
+          <button (click)="setTalla('44')" *ngIf="T44" class="btn btn-primary">44</button>
+          <button (click)="setTalla('44')" *ngIf="!T44" class="btn btn-secondary">44</button>
+        </div>
+        <div class="col" *ngIf="producte.ProdAfegits45">
+          <button (click)="setTalla('45')" *ngIf="T45" class="btn btn-primary">45</button>
+          <button (click)="setTalla('45')" *ngIf="!T45" class="btn btn-secondary">45</button>
         </div>
       </div>
+
+      <br>
+
+      <div>
+        <a>Si no troba la talla el producte no està disponible</a>
+      </div>
+
       <br>
       <div class="row" style="width: 300px" >
         <button (click)="afegirCistell()">Afegir al cistell</button>
         <a *ngIf="isVisibleC" style="text-align: center">Producte afegit al cistell.</a>
         <a *ngIf="isVisibleCS" style="text-align: center">Cal iniciar sessió previament.</a>
+        <a *ngIf="isVisibleT" style="text-align: center">Cal seleccionar una talla previament.</a>
       </div>
       <br>
       <div class="row" style="width: 300px">

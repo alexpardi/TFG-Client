@@ -1,4 +1,4 @@
-export class Productos{
+export class prodTalla{
   _id?: number;
   ProdID: string;
   ProdNom: string;
@@ -25,10 +25,11 @@ export class Productos{
   ProdAfegits43: number;
   ProdAfegits44: number;
   ProdAfegits45: number;
+  talla:string;
 
 
 
-  constructor(ProdID: string, ProdNom: string, ProdPreu: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: string[], ProdMarca: string, ProdImatge: string, ProdAfegits: number, ProdAfegitsS: number, ProdAfegitsM: number, ProdAfegitsL: number, ProdAfegitsXL: number, ProdAfegits37: number, ProdAfegits38: number, ProdAfegits39: number, ProdAfegits40: number, ProdAfegits41: number, ProdAfegits42: number, ProdAfegits43: number, ProdAfegits44: number, ProdAfegits45: number,) {
+  constructor(ProdID: string, ProdNom: string, ProdPreu: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: string[], ProdMarca: string, ProdImatge: string, ProdAfegits: number, ProdAfegitsS: number, ProdAfegitsM: number, ProdAfegitsL: number, ProdAfegitsXL: number, ProdAfegits37: number, ProdAfegits38: number, ProdAfegits39: number, ProdAfegits40: number, ProdAfegits41: number, ProdAfegits42: number, ProdAfegits43: number, ProdAfegits44: number, ProdAfegits45: number, talla:string,) {
     this.ProdID = ProdID;
     this.ProdNom = ProdNom;
     this.ProdPreu = ProdPreu;
@@ -51,5 +52,6 @@ export class Productos{
     this.ProdAfegits43 = ProdAfegits43;
     this.ProdAfegits44 = ProdAfegits44;
     this.ProdAfegits45 = ProdAfegits45;
+    this.talla = talla;
   }
 }

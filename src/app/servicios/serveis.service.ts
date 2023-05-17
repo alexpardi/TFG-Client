@@ -7,7 +7,7 @@ import {Router, RouterLink} from "@angular/router";
 import { Inicisessio } from "../modelos/inicisessio";
 import { modUsers } from "../modelos/modUsers";
 import { Favorits } from "../modelos/favorits";
-
+import { Cistell } from "../modelos/cistell";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class ServeisService {
   urlF = 'http://localhost:4000/api/client/favorits';
   urlEF = 'http://localhost:4000/api/client/eliminafavorits';
   urlC = 'http://localhost:4000/api/client/cistell';
+  urlT = 'http://localhost:4000/api/client/talles';
   urlEC = 'http://localhost:4000/api/client/eliminacistell';
   urlDG = 'http://localhost:4000/api/desplegable/';
   urlDP = 'http://localhost:4000/api/desplegable/petit/';
@@ -80,12 +81,15 @@ export class ServeisService {
     return this.http.put(this.urlEF, prod);
   }
 
-  afegirCistell(prod: Favorits): Observable<any>{
+  afegirCistell(prod: Cistell): Observable<any>{
     return this.http.put(this.urlC, prod)
   }
 
   getCistell(id: string): Observable<any>{
     return this.http.get(this.urlC + id);
+  }
+  getTalles(id: string): Observable<any>{
+    return this.http.get(this.urlT + id);
   }
 
   eliminarCistell(prod: Favorits): Observable<any>{
