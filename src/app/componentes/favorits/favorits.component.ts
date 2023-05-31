@@ -23,10 +23,10 @@ export class FavoritsComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.getFavorits();
+    this.getFavorits(0);
   }
 
-  getFavorits() {
+  getFavorits(ordenar:any) {
     var jwt = localStorage.getItem('token');
     if (jwt) {
       const tokenInfo = jwt_decode(jwt);
@@ -36,6 +36,51 @@ export class FavoritsComponent implements OnInit{
         this._Service.getFavorits(part).subscribe(data => {
           console.log(data);
           this.listFavorits = data;
+          if (ordenar == 2){
+            this.listFavorits.sort(function (a, b) {
+              if (a.ProdNom > b.ProdNom) {
+                return 1;
+              }
+              if (a.ProdNom < b.ProdNom) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 3){
+            this.listFavorits.sort(function (a, b) {
+              if (a.ProdMarca > b.ProdMarca) {
+                return 1;
+              }
+              if (a.ProdMarca < b.ProdMarca) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 4){
+            this.listFavorits.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return 1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 5){
+            this.listFavorits.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return -1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }
         }, error => {
           console.log(part);
         })
@@ -52,7 +97,7 @@ export class FavoritsComponent implements OnInit{
     if(confirm('Estas segur que vols eliminar aquest producte de favorits?')){
       this._Service.eliminarFavorits(Favorit).subscribe(data => {
         console.log(data)
-        this.getFavorits();
+        this.getFavorits(0);
         this.router.navigate(['/favorits']);
       }, error => {
         console.log(error);

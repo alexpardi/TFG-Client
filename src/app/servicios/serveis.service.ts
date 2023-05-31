@@ -8,6 +8,7 @@ import { Inicisessio } from "../modelos/inicisessio";
 import { modUsers } from "../modelos/modUsers";
 import { Favorits } from "../modelos/favorits";
 import { Cistell } from "../modelos/cistell";
+import {Comanda} from "../modelos/comanda";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class ServeisService {
   urlEF = 'http://localhost:4000/api/client/eliminafavorits';
   urlC = 'http://localhost:4000/api/client/cistell';
   urlT = 'http://localhost:4000/api/client/talles';
+  urlQ = 'http://localhost:4000/api/client/quantitat';
   urlEC = 'http://localhost:4000/api/client/eliminacistell';
   urlDG = 'http://localhost:4000/api/desplegable/';
   urlDP = 'http://localhost:4000/api/desplegable/petit/';
@@ -91,6 +93,9 @@ export class ServeisService {
   getTalles(id: string): Observable<any>{
     return this.http.get(this.urlT + id);
   }
+  getQuantitat(id: string): Observable<any>{
+    return this.http.get(this.urlQ + id);
+  }
 
   eliminarCistell(prod: Favorits): Observable<any>{
     return this.http.put(this.urlEC, prod);
@@ -104,7 +109,7 @@ export class ServeisService {
     return this.http.get(this.urlDP + esport + "/" +tipus);
   }
 
-  realitzaCompra(prod: Favorits): Observable<any>{
+  realitzaCompra(prod: Comanda): Observable<any>{
     return this.http.put(this.urlRC, prod);
   }
 

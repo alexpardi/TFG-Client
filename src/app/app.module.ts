@@ -16,6 +16,8 @@ import { DesplegablesComponent } from './componentes/desplegables/desplegables.c
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CompresAnteriorsComponent } from './componentes/compres-anteriors/compres-anteriors.component';
+import { PreguntesFrequentsComponent } from './componentes/preguntes-frequents/preguntes-frequents.component';
+import { ConfirmarCompraComponent } from './componentes/confirmar-compra/confirmar-compra.component';
 /*import {AuthGuard} from "./auth.guard";
 import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
 
@@ -28,7 +30,9 @@ import { TokenInterceptorService } from "./servei/token-interceptor.service";*/
     DetallProducteComponent,
     FavoritsComponent,
     DesplegablesComponent,
-    CompresAnteriorsComponent
+    CompresAnteriorsComponent,
+    PreguntesFrequentsComponent,
+    ConfirmarCompraComponent
   ],
   imports: [
     BrowserModule,

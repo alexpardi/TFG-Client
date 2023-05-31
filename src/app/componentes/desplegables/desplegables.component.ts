@@ -24,17 +24,62 @@ export class DesplegablesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getProductes();
+    this.getProductes(0);
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
-  getProductes() {
+  getProductes(ordenar: any) {
     if (this.tipus != null) {
       //Llista de productes al depenent del tipus de producte i esport
       if (this.esport != null) {
         this._Service.desplegableP(this.tipus , this.esport).subscribe(data => {
           console.log(data);
           this.listProductos = data;
+          if (ordenar == 2){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdNom > b.ProdNom) {
+                return 1;
+              }
+              if (a.ProdNom < b.ProdNom) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 3){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdMarca > b.ProdMarca) {
+                return 1;
+              }
+              if (a.ProdMarca < b.ProdMarca) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 4){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return 1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 5){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return -1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }
         }, error => {
           console.log(error);
         })
@@ -45,6 +90,51 @@ export class DesplegablesComponent implements OnInit{
         this._Service.desplegableG(this.esport).subscribe(data => {
           console.log(data);
           this.listProductos = data;
+          if (ordenar == 2){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdNom > b.ProdNom) {
+                return 1;
+              }
+              if (a.ProdNom < b.ProdNom) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 3){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdMarca > b.ProdMarca) {
+                return 1;
+              }
+              if (a.ProdMarca < b.ProdMarca) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 4){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return 1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 5){
+            this.listProductos.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return -1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }
         }, error => {
           console.log(error);
         })

@@ -7,6 +7,8 @@ import {DetallProducteComponent} from "./componentes/detall-producte/detall-prod
 import {FavoritsComponent} from "./componentes/favorits/favorits.component";
 import {DesplegablesComponent} from "./componentes/desplegables/desplegables.component";
 import {CompresAnteriorsComponent} from "./componentes/compres-anteriors/compres-anteriors.component";
+import {PreguntesFrequentsComponent} from "./componentes/preguntes-frequents/preguntes-frequents.component";
+import {ConfirmarCompraComponent} from "./componentes/confirmar-compra/confirmar-compra.component";
 
 const routes: Routes = [
   {path: '', component: PaginaPrincipalComponent},
@@ -17,6 +19,9 @@ const routes: Routes = [
   {path: 'desplegable/:esport', component: DesplegablesComponent},
   {path: 'desplegableP/:esport/:tipus', component: DesplegablesComponent},
   {path: 'compres-anteriors', component: CompresAnteriorsComponent},
+  {path: 'preguntesFrequents', component: PreguntesFrequentsComponent},
+  {path: 'confirmarCompra', component: ConfirmarCompraComponent},
+
 ];
 
 @NgModule({

@@ -1,0 +1,96 @@
+
+<div *ngIf="confF" class="container">
+  <p>Hi ha hagut un problema... </p>
+</div>
+
+<div *ngIf="confT == true" class="container">
+  <p>Compra realitzada correctament!</p>
+</div>
+
+
+
+<div class="container mt-5" *ngIf="confT==false">
+
+    <div class="card">
+      <div class="card-body text-center border-4">
+        <h1 class="titulo">Realitzar compra</h1>
+
+        <div class="row">
+          <div class="col mb-3">
+            <span class="float-start" style="font-size: 20px">Nom d'usuari: {{nomreal.UserName}}</span>
+          </div>
+          <div class="col mb-3">
+            <span class="float-start" style="font-size: 20px">Nom i cognom: {{nomreal.UserNameReal}}</span>
+          </div>
+          <div class=" col mb-3">
+            <span class="float-start" style="font-size: 20px">Email: {{nomreal.UserMail}}</span>
+          </div>
+        </div>
+
+        <div>
+          <span>Si les dades son incorrectes modificalas en el teu perfil.</span>
+        </div>
+
+        <form class="mt-4" [formGroup]="dadesCompra" (ngSubmit)="realitzaCompra()">
+          <div class="row">
+            <div class="col mb-3">
+              <span *ngIf="dadesCompra.get('Pais')?.value" class="float-start" style="font-size: 20px">País:</span>
+              <input type="text" class="form-control form-control-lg" placeholder="País" formControlName="Pais">
+              <div class="text-danger" *ngIf="dadesCompra.get('Pais')?.hasError('required') && dadesCompra.get('Pais')?.touched">
+                <span>Camp obligatori</span>
+              </div>
+            </div>
+
+            <div class="col mb-3">
+              <span *ngIf="dadesCompra.get('Ciutat')?.value" class="float-start" style="font-size: 20px">Ciutat:</span>
+              <input type="text" class="form-control form-control-lg" placeholder="Ciutat" formControlName="Ciutat">
+              <div class="text-danger" *ngIf="dadesCompra.get('Ciutat')?.hasError('required') && dadesCompra.get('Ciutat')?.touched">
+                <span>Camp obligatori</span>
+              </div>
+            </div>
+
+            <div class="col mb-3">
+              <span *ngIf="dadesCompra.get('CodiPostal')?.value" class="float-start" style="font-size: 20px">Codi postal:</span>
+              <input type="text" class="form-control form-control-lg" placeholder="Codi Postal" formControlName="CodiPostal">
+              <div class="text-danger" *ngIf="dadesCompra.get('CodiPostal')?.hasError('required') && dadesCompra.get('CodiPostal')?.touched">
+                <span>Camp obligatori</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-3">
+              <span *ngIf="dadesCompra.get('CarrerNum')?.value" class="float-start" style="font-size: 20px">Carrer i número:</span>
+              <input type="text" class="form-control form-control-lg" placeholder="Carrer i número" formControlName="CarrerNum">
+              <div class="text-danger" *ngIf="dadesCompra.get('CarrerNum')?.hasError('required') && dadesCompra.get('CarrerNum')?.touched">
+                <span>Camp obligatori</span>
+              </div>
+            </div>
+
+            <div class="col mb-3">
+              <span *ngIf="dadesCompra.get('NumeroTelf')?.value" class="float-start" style="font-size: 20px">Número del telèfon:</span>
+              <input type="text" class="form-control form-control-lg" placeholder="Número del telèfon" formControlName="NumeroTelf">
+              <div class="text-danger" *ngIf="dadesCompra.get('NumeroTelf')?.hasError('required') && dadesCompra.get('NumeroTelf')?.touched">
+                <span>Camp obligatori</span>
+              </div>
+              <!--a *ngIf="isVisibleMU" style="text-align: center">Dades incorrectes. Torna a intenar.</a-->
+
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row mb-3">
+            <div class="col">
+              <button type="submit" [disabled]="dadesCompra.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
+            </div>
+            <div class="col">
+              <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+</div>

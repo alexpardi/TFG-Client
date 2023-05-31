@@ -1,6 +1,6 @@
 export class Productos{
   _id?: number;
-  ProdID: string;
+  ProdID: number;
   ProdNom: string;
   ProdPreu: number;
   ProdDescripcio: string;
@@ -28,7 +28,7 @@ export class Productos{
 
 
 
-  constructor(ProdID: string, ProdNom: string, ProdPreu: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: string[], ProdMarca: string, ProdImatge: string, ProdAfegits: number, ProdAfegitsS: number, ProdAfegitsM: number, ProdAfegitsL: number, ProdAfegitsXL: number, ProdAfegits37: number, ProdAfegits38: number, ProdAfegits39: number, ProdAfegits40: number, ProdAfegits41: number, ProdAfegits42: number, ProdAfegits43: number, ProdAfegits44: number, ProdAfegits45: number,) {
+  constructor(ProdID: number, ProdNom: string, ProdPreu: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: string[], ProdMarca: string, ProdImatge: string, ProdAfegits: number, ProdAfegitsS: number, ProdAfegitsM: number, ProdAfegitsL: number, ProdAfegitsXL: number, ProdAfegits37: number, ProdAfegits38: number, ProdAfegits39: number, ProdAfegits40: number, ProdAfegits41: number, ProdAfegits42: number, ProdAfegits43: number, ProdAfegits44: number, ProdAfegits45: number,) {
     this.ProdID = ProdID;
     this.ProdNom = ProdNom;
     this.ProdPreu = ProdPreu;

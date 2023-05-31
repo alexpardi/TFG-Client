@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Productos} from "./modelos/productos";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ServeisService} from "./servicios/serveis.service";
@@ -9,9 +9,10 @@ import jwt_decode from "jwt-decode";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'TFG-cliente';
   valorTipusRet: string;
+
 
   constructor(private router: Router, private _Service: ServeisService, private aRouter: ActivatedRoute) {
     this.valorTipusRet="";
@@ -28,5 +29,7 @@ export class AppComponent {
   retValorTipus():string{
     return this.valorTipusRet;
   }
+
+
 
 }

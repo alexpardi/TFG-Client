@@ -2,7 +2,7 @@
   <div class="col-lg-6 offset-lg-3">
     <div class="card">
       <div class="card-body text-center border-4">
-        <span class="titulo">MODIFICAR USUARI</span>
+        <h4 class="titulo">MODIFICAR USUARI</h4>
         <form class="mt-4" name="ProdForm" [formGroup]="modiUserForm" (ngSubmit)="modificarUser()">
           <div class="mb-3">
             <span class="float-start" style="font-size: 20px">Nom d'usuari:</span>
@@ -82,8 +82,8 @@
         </div>
 
         <div class="mb-3">
-          <span *ngIf="regUsersForm.get('CreaNom')?.value" class="float-start" style="font-size: 20px">Nom:</span>
-          <input type="text" class="form-control form-control-lg" placeholder="Nom" formControlName="CreaNom">
+          <span *ngIf="regUsersForm.get('CreaNom')?.value" class="float-start" style="font-size: 20px">Nom i cognom:</span>
+          <input type="text" class="form-control form-control-lg" placeholder="Nom i cognom" formControlName="CreaNom">
           <div class="text-danger" *ngIf="regUsersForm.get('CreaNom')?.hasError('required') && regUsersForm.get('CreaNom')?.touched">
             <span>Camp obligatori</span>
           </div>
@@ -96,7 +96,7 @@
             <span>Camp obligatori</span>
           </div>
         </div>
-
+        <a>En acceptar, acceptes les Condicions d'ús i confirmes que has llegit la Política de privadesa.</a><br>
         <div class="row mb-3">
           <div class="col">
             <button type="submit" [disabled]="regUsersForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>

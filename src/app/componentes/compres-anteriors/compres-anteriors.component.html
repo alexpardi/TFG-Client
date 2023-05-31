@@ -12,6 +12,17 @@
                placeholder=" Què vols trobar? " maxlength="50" style="width: auto">
       </div>
     </div>
+    <div class="col-3" style="margin-left: auto; width: auto">
+      <div class="dropdown">
+        <button class="botn">Ordenar per</button>
+        <div class="dropdown-options">
+          <a (click)="getCompresAnteriors(2)">Nom del producte</a>
+          <a (click)="getCompresAnteriors(3)">Marca</a>
+          <a (click)="getCompresAnteriors(4)">Preu (menys a més)</a>
+          <a (click)="getCompresAnteriors(5)">Preu (més a menys)</a>
+        </div>
+      </div>
+    </div>
   </div>
   <br>
   <div class="row">

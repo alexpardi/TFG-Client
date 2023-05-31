@@ -21,9 +21,9 @@ export class CompresAnteriorsComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.getCompresAnteriors();
+    this.getCompresAnteriors(0);
   }
-  getCompresAnteriors() {
+  getCompresAnteriors(ordenar: any) {
     var jwt = localStorage.getItem('token');
     if (jwt) {
       const tokenInfo = jwt_decode(jwt);
@@ -33,6 +33,51 @@ export class CompresAnteriorsComponent implements OnInit{
         this._Service.getCompresAnteriors(part).subscribe(data => {
           console.log(data);
           this.listCistell = data;
+          if (ordenar == 2){
+            this.listCistell.sort(function (a, b) {
+              if (a.ProdNom > b.ProdNom) {
+                return 1;
+              }
+              if (a.ProdNom < b.ProdNom) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 3){
+            this.listCistell.sort(function (a, b) {
+              if (a.ProdMarca > b.ProdMarca) {
+                return 1;
+              }
+              if (a.ProdMarca < b.ProdMarca) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 4){
+            this.listCistell.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return 1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }else if (ordenar == 5){
+            this.listCistell.sort(function (a, b) {
+              if (a.ProdPreu > b.ProdPreu) {
+                return -1;
+              }
+              if (a.ProdPreu < b.ProdPreu) {
+                return 1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+          }
         }, error => {
           console.log(part);
         })

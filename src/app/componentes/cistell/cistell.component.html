@@ -26,18 +26,22 @@
             <br>
             <a>Talla: {{ productes.talla }}</a>
             <br>
+            <a>Quantitat: {{ productes.quantitat }}</a>
+            <br>
           </button>
-          <button class="btn btn-outline-danger" style="width: auto; margin: auto" (click)="eliminarCistell(productes._id); reload()" [routerLink]="['/cistell']">Eliminar del cistell</button>
+          <button class="btn btn-outline-danger" style="width: auto; margin: auto" (click)="eliminarCistell(productes._id, productes.talla); reload()" [routerLink]="['/cistell']">Eliminar del cistell</button>
         </div>
       </div>
   </div>
 
   <br>
-  <button class="btn btn-dark" (click)="realitzaCompra()" *ngIf="listCistell.length != 0" [routerLink]="['/']">Realitzar compra</button>
+  <!--button class="btn btn-dark"  *ngIf="listCistell.length != 0" (click)="realitzaCompra(); reload()" [routerLink]="['/cistell']">Realitzar compra</button-->
+  <button class="btn btn-dark" *ngIf="listCistell.length != 0" [routerLink]="['/confirmarCompra']">Realitzar compra</button>
 
 
 </div>
 <h4 class="text-center" *ngIf="listCistell.length == 0">Encara no hi ha productes al cistell.</h4>
+
 
 
 
