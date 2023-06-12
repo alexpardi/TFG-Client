@@ -30,6 +30,8 @@ export class ServeisService {
   urlDP = 'http://localhost:4000/api/desplegable/petit/';
   urlRC = 'http://localhost:4000/api/client/comprar';
   urlCA = 'http://localhost:4000/api/client/compresanteriors';
+  urlCAT = 'http://localhost:4000/api/client/tallacompresanteriors';
+  urlPTC = 'http://localhost:4000/api/client/prodTCistell';
 
   constructor(private  http: HttpClient) { }
 
@@ -96,6 +98,9 @@ export class ServeisService {
   getQuantitat(id: string): Observable<any>{
     return this.http.get(this.urlQ + id);
   }
+  getProdTCistell(id: string): Observable<any>{
+    return this.http.get(this.urlPTC + id);
+  }
 
   eliminarCistell(prod: Favorits): Observable<any>{
     return this.http.put(this.urlEC, prod);
@@ -115,5 +120,8 @@ export class ServeisService {
 
   getCompresAnteriors(id: string): Observable<any>{
     return this.http.get(this.urlCA + id);
+  }
+  getTallaCompresAnteriors(id: string): Observable<any>{
+    return this.http.get(this.urlCAT + id);
   }
 }

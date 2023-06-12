@@ -91,6 +91,10 @@ export class DetallProducteComponent implements OnInit{
     }
   }
 
+  reload(){
+    window.location.reload();
+  }
+
   afegirFavorits() {
     if (this.user != null) {
       if (this.id != null) {
@@ -135,6 +139,7 @@ export class DetallProducteComponent implements OnInit{
             setTimeout(() => {
               this.isVisibleC = false;
             }, 5000);
+            this.reload();
           }, error => {
             console.log(error);
 
